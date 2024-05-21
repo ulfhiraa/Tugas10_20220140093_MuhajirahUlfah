@@ -1,0 +1,31 @@
+body {
+    font-family: 'Kanit', sans-serif;
+    background-image: url('https://i.pinimg.com/564x/5b/93/01/5b9301662b0fe8a34e596f222423d4ad.jpg'); /* Replace with your image URL */
+}
+.container {
+    margin-top: 50px;
+}
+.form-container {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #007bff; /* Blue border */
+    background-size: cover;
+    background-position: center;
+}
+.form-container .header, .form-container form {
+    padding: 20px;
+    border-radius: 8px;
+}
+/*For button submit*/
+button[type="submit"] {
+    background-color: rgb(167, 149, 166);
+    color: whitesmoke;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer; /* Changes cursor to pointer on hover */
+}
+button[type="submit"]:hover {
+    background-color: #f0f8ff; /* Lighter azure on hover */
+}

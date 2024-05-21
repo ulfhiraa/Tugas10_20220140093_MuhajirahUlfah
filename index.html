@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>DOM Javascript</title>
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-image: url('https://i.pinimg.com/736x/83/61/7c/83617c72a1919283f2ca01869e381512.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .form-container {
+            background: rgba(255, 255, 255, 0.9); /* Add a background color to ensure visibility */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+        }
+        .form-container .header, .form-container form {
+            padding: 20px;
+            border-radius: 8px;
+        }
+        /*For button submit*/
+        button[type="submit"] {
+            background-color: rgb(167, 149, 166);
+            color: whitesmoke;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer; /* Changes cursor to pointer on hover */
+        }
+        button[type="submit"]:hover {
+            background-color: #f0f8ff; /* Lighter azure on hover */
+        }
+    </style>
+</head>
+<body>
+    <!-- NavBar  -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow sm"
+    style="background-color: #F1E4E9;">
+        <div class="container-fluid">
+          <span class="navbar-text me-auto" id="current-time"></span>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText"></div>
+        </div>
+      </nav>
+    
+      <script>
+        function showTime() {
+          var date = new Date();
+          var hours = date.getHours().toString().padStart(2, '0');
+          var minutes = date.getMinutes().toString().padStart(2, '0');
+          var seconds = date.getSeconds().toString().padStart(2, '0');
+          var time = hours + ":" + minutes + ":" + seconds;
+          document.getElementById("current-time").innerText = time;
+          setTimeout(showTime, 1000);
+        }
+    
+        window.onload = showTime;
+      </script>
+
+    <script>
+      function showTime() {
+          var date = new Date();
+          var hours = date.getHours();
+          var greeting = "";
+          if (hours < 12) {
+              greeting = "Good Morning";
+          } else if (hours < 18) {
+              greeting = "Good Afternoon";
+          } else {
+              greeting = "Good Evening";
+          }
+          document.getElementById("current-time").innerText = greeting + ", " + getCurrentTime();
+          setTimeout(showTime, 1000);
+      }
+
+      function getCurrentTime() {
+          var date = new Date();
+          var hours = date.getHours().toString().padStart(2, '0');
+          var minutes = date.getMinutes().toString().padStart(2, '0');
+          var seconds = date.getSeconds().toString().padStart(2, '0');
+          return hours + ":" + minutes + ":" + seconds;
+      }
+
+      window.onload = function () {
+          showTime();
+      };
+    </script>
+    <!-- NavBar  -->
+    
+    <!--Form Pendaftaran Start-->
+    <div class="container d-flex justify-content-center">
+        <div class="form-container" style="background-color:rgb(238, 227, 228);">
+            <div class="header">
+                <h3 class="text-center"><u>Specialization Registration Form</u></h3>
+            </div>
+            <form action="" onsubmit="return kirimdata(event)">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name" class="font-weight-bold">Name</label>
+                            <input type="text" class="form-control" placeholder="Your name" id="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="id" class="font-weight-bold">Student Number</label>
+                            <input type="text" class="form-control" placeholder="Your Student Number" id="id">
+                        </div>
+                        <div class="form-group">
+                            <label for="classof" class="font-weight-bold">Class Of</label>
+                            <select name="classof" id="classof" class="form-control">
+                                <option value="2020">2020</option>
+                                <option value="2021">2021</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="specialization" class="font-weight-bold">Specialization</label>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" name="specialization" id="data" value="Data">
+                                <label class="form-check-label" for="data">Data</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" name="specialization" id="ui/ux" value="UI/UX">
+                                <label class="form-check-label" for="ui/ux">UI/UX</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" name="specialization" id="networking" value="Networking">
+                                <label class="form-check-label" for="networking">Networking</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" name="specialization" id="programming" value="Programming">
+                                <label class="form-check-label" for="programming">Programming</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="birthdate" class="font-weight-bold">Birthdate</label>
+                            <input type="text" class="form-control" id="birthdate" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="sex" class="font-weight-bold">Sex</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="man" id="man">
+                                <label class="form-check-label" for="man">Man</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="woman" id="woman">
+                                <label class="form-check-label" for="woman">Woman</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address" class="font-weight-bold">Address</label>
+                            <textarea placeholder="Type your address here" name="address" id="address" class="form-control" rows="5"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Send</button>
+            </form>
+        </div>
+    </div>
+    <!--Form Pendaftaran End-->
+
+  <!-- Footer  -->
+  <footer class="text-light" style="background-color: #F1E4E9;">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="text-center py-3">
+            <p class="text-dark">Copyright &copy; ulfhiraa</p>
+            <p>
+              <!-- Tautan dan gambar untuk Instagram -->
+              <a href="https://www.instagram.com/ulfhiraa/" target="_blank">
+                <img src="instagram.png" alt="Instagram" width="30" height="30">
+              </a>
+              <!-- Tautan dan gambar untuk GitHub -->
+              <a href="https://github.com/ulfhiraa" target="_blank">
+                <img src="github.png" alt="GitHub" width="30" height="30">
+              </a>
+              <!-- Tautan dan gambar untuk LinkedIn -->
+              <a href="https://www.linkedin.com/in/ulfhiraa/" target="_blank">
+                <img src="linkedin.png" alt="LinkedIn" width="30" height="30">
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer> 
+  <!-- Footer  -->
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            flatpickr("#birthdate", {
+                dateFormat: "d-m-Y",
+                allowInput: true
+            });
+        });
+
+        function kirimdata(event) {
+            event.preventDefault();
+
+            var name = document.getElementById('name').value;
+            var birthdate = document.getElementById('birthdate').value;
+            
+            var sex = [];
+            if (document.getElementById('man').checked) {
+                sex.push('Man');
+            }
+            if (document.getElementById('woman').checked) {
+                sex.push('Woman');
+            }
+            sex = sex.join(', ');
+
+            var id = document.getElementById('id').value;
+            var specialization = document.querySelector('input[name="specialization"]:checked').value;
+            var classOf = document.getElementById('classof').value;
+            var address = document.getElementById('address').value;
+
+            alert(
+                'Name: ' + name + '\n' +
+                'Birthdate: ' + birthdate + '\n' +
+                'Sex: ' + sex + '\n' +
+                'ID: ' + id + '\n' +
+                'Specialization: ' + specialization + '\n' +
+                'Class Of: ' + classOf + '\n' +
+                'Address: ' + address
+            );
+        }
+    </script>
+</body>
+</html>
